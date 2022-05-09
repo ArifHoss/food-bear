@@ -1,7 +1,7 @@
 package com.foodbear.foodbear.controller;
 
 import com.foodbear.foodbear.entities.Promotion;
-import com.foodbear.foodbear.service.PromotionService;
+import com.foodbear.foodbear.services.service.PromotionService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;

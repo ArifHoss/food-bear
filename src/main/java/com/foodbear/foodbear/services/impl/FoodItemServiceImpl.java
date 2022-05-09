@@ -1,4 +1,4 @@
-package com.foodbear.foodbear.service;
+package com.foodbear.foodbear.services.impl;
 
 import com.foodbear.foodbear.entities.FoodItem;
 import com.foodbear.foodbear.entities.Restaurant;
@@ -14,15 +14,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Service("foodItemService")
-public class FoodItemService {
+public class FoodItemServiceImpl implements com.foodbear.foodbear.services.service.FoodItemService {
 
     private final FoodItemDaoJpa foodItemDaoJpa;
     private final RestaurantDaoJpa restaurantDaoJpa;
 
+    @Override
     public List<FoodItem> getAllFoodItems() {
         return (List<FoodItem>) foodItemDaoJpa.findAll();
     }
 
+    @Override
     public FoodItem createFoodItemWithRestaurant(FoodItem foodItem, Long id) {
 
         Restaurant restaurant = restaurantDaoJpa.findById(id)
@@ -33,11 +35,13 @@ public class FoodItemService {
         return foodItemDaoJpa.save(foodItem);
     }
 
+    @Override
     public void deleteFoodItem(Long id) {
         FoodItem foodItem = findItemById(id);
         foodItemDaoJpa.delete(foodItem);
     }
 
+    @Override
     public FoodItem updateFoodItem(Long id, FoodItem foodItem) {
         FoodItem foundFoodItem = findItemById(id);
 
@@ -51,6 +55,7 @@ public class FoodItemService {
         return foodItemDaoJpa.save(foundFoodItem);
     }
 
+    @Override
     public FoodItem getItemById(Long itemId) {
         return findItemById(itemId);
     }

@@ -1,4 +1,4 @@
-package com.foodbear.foodbear.service;
+package com.foodbear.foodbear.services.impl;
 
 import com.foodbear.foodbear.entities.Promotion;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
@@ -15,24 +15,28 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @Service("promotionService")
-public class PromotionService {
+public class PromotionServiceImpl implements com.foodbear.foodbear.services.service.PromotionService {
 
     private PromotionDaoJpa promotionDaoJpa;
 
 
+    @Override
     public List<Promotion> getAllPromotions() {
         return promotionDaoJpa.findAll();
     }
 
+    @Override
     public Promotion create(Promotion promotion) {
         return promotionDaoJpa.save(promotion);
     }
 
+    @Override
     public Promotion getById(Long id) {
         return findPromotionById(id);
     }
 
 
+    @Override
     public Promotion update(Long promotionId, Map<Object, Object> fields) {
 
         Promotion promotion = findPromotionById(promotionId);
@@ -46,6 +50,7 @@ public class PromotionService {
         return promotionDaoJpa.save(promotion);
     }
 
+    @Override
     public String delete(Long id) {
 
         Promotion promotion = findPromotionById(id);

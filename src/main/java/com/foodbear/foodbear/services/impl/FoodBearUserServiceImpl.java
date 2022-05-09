@@ -1,4 +1,4 @@
-package com.foodbear.foodbear.service;
+package com.foodbear.foodbear.services.impl;
 
 import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.exception.ConflictException;
@@ -14,16 +14,18 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Service("foodBearUserService")
-public class FoodBearUserService {
+public class FoodBearUserServiceImpl implements com.foodbear.foodbear.services.service.FoodBearUserService {
 
     private final FoodBearUserDaoJpa foodBearUserDaoJpa;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    @Override
     public List<FoodBearUser> getAllUsers() {
         return (List<FoodBearUser>) foodBearUserDaoJpa.findAll();
     }
 
 
+    @Override
     public FoodBearUser createUser(FoodBearUser foodBearUser) {
 
 
@@ -36,11 +38,13 @@ public class FoodBearUserService {
     }
 
 
+    @Override
     public void deleteUser(Long id) {
         FoodBearUser user = findUser(id);
         foodBearUserDaoJpa.delete(user);
     }
 
+    @Override
     public FoodBearUser updateUser(Long id, FoodBearUser foodBearUser) {
         FoodBearUser foundUser = findUser(id);
 
@@ -64,6 +68,7 @@ public class FoodBearUserService {
         return foodBearUserDaoJpa.save(foundUser);
     }
 
+    @Override
     public FoodBearUser findUserById(Long id) {
         return findUser(id);
     }

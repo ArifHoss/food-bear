@@ -1,7 +1,7 @@
 package com.foodbear.foodbear.controller;
 
 import com.foodbear.foodbear.entities.UserAddress;
-import com.foodbear.foodbear.service.UserAddressService;
+import com.foodbear.foodbear.services.service.UserAddressService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;

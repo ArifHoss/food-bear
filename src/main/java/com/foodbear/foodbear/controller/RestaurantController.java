@@ -1,13 +1,12 @@
 package com.foodbear.foodbear.controller;
 
 import com.foodbear.foodbear.entities.Restaurant;
-import com.foodbear.foodbear.service.RestaurantService;
+import com.foodbear.foodbear.services.service.RestaurantService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
 @AllArgsConstructor

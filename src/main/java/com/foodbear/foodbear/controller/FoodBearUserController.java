@@ -1,7 +1,7 @@
 package com.foodbear.foodbear.controller;
 
 import com.foodbear.foodbear.entities.FoodBearUser;
-import com.foodbear.foodbear.service.FoodBearUserService;
+import com.foodbear.foodbear.services.impl.FoodBearUserServiceImpl;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,29 +14,30 @@ import java.util.List;
 @RequestMapping("/user")
 public class FoodBearUserController {
 
-    private final FoodBearUserService foodBearUserService;
+    private final FoodBearUserServiceImpl foodBearUserServiceImpl;
 
     @GetMapping
     public List<FoodBearUser> getAllUsers(){
-        return foodBearUserService.getAllUsers();
+        return foodBearUserServiceImpl.getAllUsers();
     }
 
     @GetMapping("{id}")
     public FoodBearUser findUserById(@PathVariable Long id){
-        return foodBearUserService.findUserById(id);
+        return foodBearUserServiceImpl.findUserById(id);
     }
 
     @PostMapping
     public  FoodBearUser createUser(@RequestBody FoodBearUser foodBearUser){
-        return foodBearUserService.createUser(foodBearUser);
+        return foodBearUserServiceImpl.createUser(foodBearUser);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id")Long id){
-        foodBearUserService.deleteUser(id);
+    public String deleteUser(@PathVariable("id")Long id){
+        foodBearUserServiceImpl.deleteUser(id);
+        return "USER HAS BEEN DELETED";
     }
     @PatchMapping("/{id}")
     public FoodBearUser updateUser(@PathVariable("id") Long id, @RequestBody FoodBearUser foodBearUser){
-        return foodBearUserService.updateUser(id, foodBearUser);
+        return foodBearUserServiceImpl.updateUser(id, foodBearUser);
     }
 }

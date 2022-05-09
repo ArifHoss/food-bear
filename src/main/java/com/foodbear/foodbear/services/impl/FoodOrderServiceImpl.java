@@ -1,4 +1,4 @@
-package com.foodbear.foodbear.service;
+package com.foodbear.foodbear.services.impl;
 
 import com.foodbear.foodbear.entities.FoodItem;
 import com.foodbear.foodbear.entities.FoodOrder;
@@ -18,7 +18,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @Service("orderService")
-public class FoodOrderService {
+public class FoodOrderServiceImpl implements com.foodbear.foodbear.services.service.FoodOrderService {
 
     private FoodOrderDaoJpa orderDaoJpa;
     private FoodItemDaoJpa foodItemDaoJpa;
@@ -26,20 +26,24 @@ public class FoodOrderService {
 
 
 
+    @Override
     public List<FoodOrder> getAllOrder() {
         return orderDaoJpa.findAll();
     }
 
+    @Override
     public FoodOrder createOrder(FoodOrder foodBearOrder) {
         Sender.sendMessage(foodBearOrder.getTotalPrice());
         return orderDaoJpa.save(foodBearOrder);
     }
 
+    @Override
     public void deleteOrder(Long id) {
         FoodOrder order = findOrderById(id);
         orderDaoJpa.delete(order);
     }
 
+    @Override
     public FoodOrder updateOrder(Long id, FoodOrder order) {
         FoodOrder foundOrder = findOrderById(id);
         Long totalPrice = order.getTotalPrice();
@@ -50,6 +54,7 @@ public class FoodOrderService {
        return orderDaoJpa.save(foundOrder);
     }
 
+    @Override
     public FoodOrder createAOrderItemAndPromotion(FoodOrder order, Long foodItemId, Long promotionId) {
 
 
@@ -61,6 +66,7 @@ public class FoodOrderService {
         return orderDaoJpa.save(order);
     }
 
+    @Override
     public FoodOrder getOrderById(Long orderId) {
         return findOrderById(orderId);
     }

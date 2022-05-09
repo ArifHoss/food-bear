@@ -1,4 +1,4 @@
-package com.foodbear.foodbear.service;
+package com.foodbear.foodbear.services.impl;
 
 import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.entities.UserAddress;
@@ -14,20 +14,23 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Service("userAddressService")
-public class UserAddressService {
+public class UserAddressServiceImpl implements com.foodbear.foodbear.services.service.UserAddressService {
 
     private UserAddressDaoJpa userAddressDaoJpa;
     private FoodBearUserDaoJpa foodBearUserDaoJpa;
 
 
+    @Override
     public List<UserAddress> getAllAddress() {
         return userAddressDaoJpa.findAll();
     }
 
+    @Override
     public UserAddress getAddressById(Long id) {
         return findAddressById(id);
     }
 
+    @Override
     public UserAddress createAddress(UserAddress userAddress, Long userId) {
         FoodBearUser user = foodBearUserDaoJpa.findById(userId).orElseThrow(
                 () -> new ResourceNotFoundException("USER_NOT_FOUND")
@@ -36,6 +39,7 @@ public class UserAddressService {
         return userAddressDaoJpa.save(userAddress);
     }
 
+    @Override
     public UserAddress update(Long id, UserAddress userAddress) {
 
         String adressLine = userAddress.getAdressLine();
@@ -56,6 +60,7 @@ public class UserAddressService {
         return userAddressDaoJpa.save(address);
     }
 
+    @Override
     public String delete(Long id) {
         UserAddress address = findAddressById(id);
         userAddressDaoJpa.delete(address);
