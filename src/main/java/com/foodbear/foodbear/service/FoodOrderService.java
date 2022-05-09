@@ -33,7 +33,7 @@ public class FoodOrderService {
     }
 
     public FoodOrder createOrder(FoodOrder foodBearOrder) {
-        Sender.sendMessage(foodBearOrder);
+        Sender.sendMessage(foodBearOrder.getTotalPrice());
         return orderDaoJpa.save(foodBearOrder);
     }
 

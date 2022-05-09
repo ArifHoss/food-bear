@@ -16,7 +16,7 @@ public class Sender {
         Sender.jmsTemplate = jmsTemplate;
     }
 
-    public static void sendMessage(FoodOrder foodBearOrder){
-        jmsTemplate.convertAndSend(FOODBEAR_QUEUE, foodBearOrder);
+    public static void sendMessage(Long price){
+        jmsTemplate.convertAndSend(FOODBEAR_QUEUE, price);
     }
 }

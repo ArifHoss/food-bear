@@ -20,6 +20,7 @@ import java.util.Set;
 public class FoodOrder extends SharedClass{
 
     private Long totalPrice;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime localDateTime;
 
