@@ -34,8 +34,7 @@ public class PromotionController {
     }
     @PatchMapping("/{id}")
     public Promotion update(@PathVariable Long id, @RequestBody Map<Object, Object> fields){
-        Promotion promotion = promotionService.getById(id);
-        return promotionService.update(promotion, fields);
+        return promotionService.update(id, fields);
     }
 
     @DeleteMapping("/{id}")

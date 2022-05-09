@@ -1,6 +1,7 @@
 package com.foodbear.foodbear.service;
 
 import com.foodbear.foodbear.entities.Promotion;
+import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.PromotionDaoJpa;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,11 +29,14 @@ public class PromotionService {
     }
 
     public Promotion getById(Long id) {
-        return promotionDaoJpa.findById(id).get();
-//        return promotionDaoJpa.getById(id);
+        return findPromotionById(id);
     }
 
-    public Promotion update(Promotion promotion, Map<Object, Object> fields) {
+
+    public Promotion update(Long promotionId, Map<Object, Object> fields) {
+
+        Promotion promotion = findPromotionById(promotionId);
+
         fields.forEach((key, value) -> {
             Field field = ReflectionUtils.findField(Promotion.class, (String) key);
             field.setAccessible(true);
@@ -43,7 +47,15 @@ public class PromotionService {
     }
 
     public String delete(Long id) {
-        promotionDaoJpa.deleteById(id);
+
+        Promotion promotion = findPromotionById(id);
+        promotionDaoJpa.delete(promotion);
+
         return "PROMOTION_HAS_BEEN_DELETED";
+    }
+
+
+    private Promotion findPromotionById(Long id) {
+        return promotionDaoJpa.findById(id).orElseThrow(() -> new ResourceNotFoundException("INVALID_PROMOTION_ID"));
     }
 }
