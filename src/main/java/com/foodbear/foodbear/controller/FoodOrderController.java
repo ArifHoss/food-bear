@@ -48,7 +48,7 @@ public class FoodOrderController {
     }
 
     @PatchMapping("/{id}")
-    public void updateOrder(@PathVariable("id")Long id, @RequestBody FoodOrder foodBearOrder){
-        orderService.updateOrder(id, foodBearOrder);
+    public FoodOrder updateOrder(@PathVariable("id")Long id, @RequestBody FoodOrder foodBearOrder){
+        return orderService.updateOrder(id, foodBearOrder);
     }
 }

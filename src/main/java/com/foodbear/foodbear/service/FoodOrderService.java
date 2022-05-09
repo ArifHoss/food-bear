@@ -40,10 +40,14 @@ public class FoodOrderService {
         orderDaoJpa.delete(order);
     }
 
-    public void updateOrder(Long id, FoodOrder foodBearOrder) {
+    public FoodOrder updateOrder(Long id, FoodOrder order) {
         FoodOrder foundOrder = findOrderById(id);
+        Long totalPrice = order.getTotalPrice();
 
-        orderDaoJpa.save(foundOrder);
+        if (totalPrice != null){
+            foundOrder.setTotalPrice(totalPrice);
+        }
+       return orderDaoJpa.save(foundOrder);
     }
 
     public FoodOrder createAOrderItemAndPromotion(FoodOrder order, Long foodItemId, Long promotionId) {

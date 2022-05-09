@@ -36,7 +36,7 @@ public class FoodBearUserController {
         foodBearUserService.deleteUser(id);
     }
     @PatchMapping("/{id}")
-    public void updateUser(@PathVariable("id") Long id, @RequestBody FoodBearUser foodBearUser){
-        foodBearUserService.updateUser(id, foodBearUser);
+    public FoodBearUser updateUser(@PathVariable("id") Long id, @RequestBody FoodBearUser foodBearUser){
+        return foodBearUserService.updateUser(id, foodBearUser);
     }
 }

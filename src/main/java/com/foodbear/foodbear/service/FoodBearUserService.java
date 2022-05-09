@@ -41,7 +41,7 @@ public class FoodBearUserService {
         foodBearUserDaoJpa.delete(user);
     }
 
-    public void updateUser(Long id, FoodBearUser foodBearUser) {
+    public FoodBearUser updateUser(Long id, FoodBearUser foodBearUser) {
         FoodBearUser foundUser = findUser(id);
 
         if (foodBearUser.getFirstName() != null) {
@@ -61,7 +61,7 @@ public class FoodBearUserService {
             foundUser.setAuthorizationType(foodBearUser.getAuthorizationType());
         }
 
-        foodBearUserDaoJpa.save(foundUser);
+        return foodBearUserDaoJpa.save(foundUser);
     }
 
     public FoodBearUser findUserById(Long id) {
