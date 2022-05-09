@@ -1,5 +1,6 @@
 package com.foodbear.foodbear.sender;
 
+import com.foodbear.foodbear.entities.FoodOrder;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ public class Sender {
         Sender.jmsTemplate = jmsTemplate;
     }
 
-    public static void sendMessage(){
-        jmsTemplate.convertAndSend(FOODBEAR_QUEUE, message);
+    public static void sendMessage(FoodOrder foodBearOrder){
+        jmsTemplate.convertAndSend(FOODBEAR_QUEUE, foodBearOrder);
     }
 }
