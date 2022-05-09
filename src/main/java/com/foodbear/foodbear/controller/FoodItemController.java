@@ -24,6 +24,11 @@ public class FoodItemController {
         return foodItemService.getAllFoodItems();
     }
 
+    @GetMapping("{itemId}")
+    public FoodItem getItemById(@PathVariable("itemId") Long itemId){
+        return foodItemService.getItemById(itemId);
+    }
+
     @PostMapping("/restaurant/{restaurantId}")
     public FoodItem addFoodItem(@RequestBody FoodItem foodItem,@PathVariable("restaurantId") Long restaurantId){
         return foodItemService.addFoodItem(foodItem, restaurantId);

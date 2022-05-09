@@ -3,6 +3,7 @@ package com.foodbear.foodbear.service;
 import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.entities.FoodItem;
 import com.foodbear.foodbear.entities.Restaurant;
+import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodItemDaoJpa;
 import com.foodbear.foodbear.repo.RestaurantDaoJpa;
 import lombok.AllArgsConstructor;
@@ -37,7 +38,7 @@ public class FoodItemService {
     }
 
     public void updateFoodItem(Long id, FoodItem foodItem) {
-        FoodItem foundFoodItem = foodItemDaoJpa.findById(id).get();
+        FoodItem foundFoodItem = findItemById(id);
 
         if(foodItem.getFoodItem()!=null){
             foundFoodItem.setFoodItem(foodItem.getFoodItem());
@@ -47,5 +48,13 @@ public class FoodItemService {
             foundFoodItem.setType(foodItem.getType());
         }
         foodItemDaoJpa.save(foundFoodItem);
+    }
+
+    public FoodItem getItemById(Long itemId) {
+        return findItemById(itemId);
+    }
+
+    private FoodItem findItemById(Long itemId) {
+        return foodItemDaoJpa.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("INVALID_FOOD_ITEM_ID"));
     }
 }

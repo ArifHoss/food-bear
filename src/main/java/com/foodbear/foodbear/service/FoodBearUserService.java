@@ -27,18 +27,14 @@ public class FoodBearUserService {
     public FoodBearUser createUser(FoodBearUser foodBearUser) {
 
 
-        String email = foodBearUser.getEmail();
-        List<String> existing = foodBearUserDaoJpa.existingEmail();
-
-        if (existing.contains(email)) {
-            throw new ConflictException("EMAIL_ALREADY_EXIST");
-        }
+        checkExistingEmail(foodBearUser);
 
         foodBearUser.setPassword(passwordEncoder.encode(foodBearUser.getPassword()));
 
          foodBearUserDaoJpa.save(foodBearUser);
          return foodBearUser;
     }
+
 
     public void deleteUser(Long id) {
         FoodBearUser user = findUser(id);
@@ -74,5 +70,14 @@ public class FoodBearUserService {
     private FoodBearUser findUser(Long id) {
         return foodBearUserDaoJpa.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("USER_NOT_FOUND"));
+    }
+
+    private void checkExistingEmail(FoodBearUser foodBearUser) {
+        String email = foodBearUser.getEmail();
+        List<String> existing = foodBearUserDaoJpa.existingEmail();
+
+        if (existing.contains(email)) {
+            throw new ConflictException("EMAIL_ALREADY_EXIST");
+        }
     }
 }
