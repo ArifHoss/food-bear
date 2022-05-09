@@ -36,11 +36,12 @@ public class FoodOrderService {
     }
 
     public void deleteOrder(Long id) {
-        orderDaoJpa.deleteById(id);
+        FoodOrder order = findOrderById(id);
+        orderDaoJpa.delete(order);
     }
 
     public void updateOrder(Long id, FoodOrder foodBearOrder) {
-        FoodOrder foundOrder = orderDaoJpa.findById(id).orElseThrow(()->new ResourceNotFoundException("INVALID_ORDER_ID"));
+        FoodOrder foundOrder = findOrderById(id);
 
         orderDaoJpa.save(foundOrder);
     }
@@ -54,5 +55,13 @@ public class FoodOrderService {
         order.setPromotion(promotion);
 
         return orderDaoJpa.save(order);
+    }
+
+    public FoodOrder getOrderById(Long orderId) {
+        return findOrderById(orderId);
+    }
+
+    private FoodOrder findOrderById(Long orderId) {
+        return orderDaoJpa.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("INVALID_ORDER_ID"));
     }
 }

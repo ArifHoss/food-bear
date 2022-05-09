@@ -22,6 +22,11 @@ public class FoodOrderController {
         return orderService.getAllOrder();
     }
 
+    @GetMapping("{orderId}")
+    public FoodOrder getOrderById(@PathVariable("orderId") Long orderId){
+        return orderService.getOrderById(orderId);
+    }
+
     @PostMapping
     public FoodOrder createOrder(@RequestBody FoodOrder foodBearOrder){
         return orderService.createOrder(foodBearOrder);
@@ -37,9 +42,11 @@ public class FoodOrderController {
 
 
     @DeleteMapping("/{id}")
-    public void deleteOrder(@PathVariable("id")Long id){
+    public String deleteOrder(@PathVariable("id")Long id){
         orderService.deleteOrder(id);
+        return "ORDER HAS BEEN DELETED";
     }
+
     @PatchMapping("/{id}")
     public void updateOrder(@PathVariable("id")Long id, @RequestBody FoodOrder foodBearOrder){
         orderService.updateOrder(id, foodBearOrder);
