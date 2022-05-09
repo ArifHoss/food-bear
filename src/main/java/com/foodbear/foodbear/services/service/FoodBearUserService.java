@@ -14,4 +14,6 @@ public interface FoodBearUserService {
     FoodBearUser updateUser(Long id, FoodBearUser foodBearUser);
 
     FoodBearUser findUserById(Long id);
+
+    FoodBearUser findUserByUsername(String username);
 }

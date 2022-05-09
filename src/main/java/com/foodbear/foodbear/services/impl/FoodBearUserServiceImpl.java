@@ -4,6 +4,7 @@ import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.exception.ConflictException;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
+import com.foodbear.foodbear.services.service.FoodBearUserService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Service("foodBearUserService")
-public class FoodBearUserServiceImpl implements com.foodbear.foodbear.services.service.FoodBearUserService {
+public class FoodBearUserServiceImpl implements FoodBearUserService {
 
     private final FoodBearUserDaoJpa foodBearUserDaoJpa;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -71,6 +72,11 @@ public class FoodBearUserServiceImpl implements com.foodbear.foodbear.services.s
     @Override
     public FoodBearUser findUserById(Long id) {
         return findUser(id);
+    }
+
+    @Override
+    public FoodBearUser findUserByUsername(String username) {
+        return foodBearUserDaoJpa.findByEmail(username);
     }
 
     private FoodBearUser findUser(Long id) {
