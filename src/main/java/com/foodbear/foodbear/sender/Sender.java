@@ -1,4 +1,3 @@
-/*
 package com.foodbear.foodbear.sender;
 
 import org.springframework.jms.core.JmsTemplate;
@@ -20,4 +19,3 @@ public class Sender {
         jmsTemplate.convertAndSend(FOODBEAR_QUEUE, message);
     }
 }
-*/

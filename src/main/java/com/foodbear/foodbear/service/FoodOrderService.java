@@ -7,6 +7,7 @@ import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodItemDaoJpa;
 import com.foodbear.foodbear.repo.FoodOrderDaoJpa;
 import com.foodbear.foodbear.repo.PromotionDaoJpa;
+import com.foodbear.foodbear.sender.Sender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class FoodOrderService {
     }
 
     public FoodOrder createOrder(FoodOrder foodBearOrder) {
-//        Sender.sendMessage();
+        Sender.sendMessage();
         return orderDaoJpa.save(foodBearOrder);
     }
 
