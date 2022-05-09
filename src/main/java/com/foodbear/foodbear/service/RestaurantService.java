@@ -1,15 +1,13 @@
 package com.foodbear.foodbear.service;
 
 import com.foodbear.foodbear.entities.Restaurant;
+import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.RestaurantDaoJpa;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ReflectionUtils;
 
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -23,25 +21,36 @@ public class RestaurantService {
     }
 
     public Restaurant getRestaurantById(Long id) {
-        return restaurantDaoJpa.findById(id).get();
+        return findRestaurantById(id);
     }
+
 
     public Restaurant create(Restaurant restaurant){
         return restaurantDaoJpa.save(restaurant);
     }
 
     public Restaurant update(Long id, Restaurant restaurant){
-        Restaurant getRestaurant = restaurantDaoJpa.findById(id).get();
-        if (restaurant.getName()!=null) {
-            getRestaurant.setName(restaurant.getName());
+
+        Restaurant findRestaurantToUpdate = findRestaurantById(id);
+        String newName = restaurant.getName();
+
+        if (newName !=null) {
+            findRestaurantToUpdate.setName(newName);
         }
 
-        return restaurantDaoJpa.save(restaurant);
+        return restaurantDaoJpa.save(findRestaurantToUpdate);
 
     }
 
     public String delete(Long id){
-        restaurantDaoJpa.deleteById(id);
+        Restaurant restaurant= findRestaurantById(id);
+        restaurantDaoJpa.delete(restaurant);
         return "RESTAURANT_DELETED";
+    }
+
+
+
+    private Restaurant findRestaurantById(Long id) {
+        return restaurantDaoJpa.findById(id).orElseThrow(() -> new ResourceNotFoundException("INVALID_RESTAURANT_ID"));
     }
 }
