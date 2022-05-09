@@ -34,13 +34,6 @@ public class FoodOrderController {
         return orderService.createAOrderItemAndPromotion(order,foodItemId,promotionId);
 
     }
-/*
-
-    @GetMapping("/newOrders")
-        public String orderReciever(){
-        return orderService.recieveNewOrders();
-    }
-*/
 
 
     @DeleteMapping("/{id}")

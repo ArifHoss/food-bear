@@ -15,14 +15,12 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class JmsConfig {
 
-    public static final String FOODBEAR_QUEUE = "foodbear-queue";
-
 
     @Bean
     public MessageConverter messageConverter() {
 
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
-        converter.setTargetType(MessageType.TEXT);
+        converter.setTargetType(MessageType.BYTES);
         converter.setTypeIdPropertyName("_type");
 
         ObjectMapper objectMapper = new ObjectMapper();

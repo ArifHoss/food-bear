@@ -24,8 +24,6 @@ public class FoodOrderService {
     private FoodItemDaoJpa foodItemDaoJpa;
     private PromotionDaoJpa promotionDaoJpa;
 
-//    private JmsTemplate jmsTemplate;
-
 
 
     public List<FoodOrder> getAllOrder() {
@@ -57,8 +55,4 @@ public class FoodOrderService {
 
         return orderDaoJpa.save(order);
     }
-/*
-    public String recieveNewOrders() {
-        return OrderReciever.orderListener();
-    }*/
 }
