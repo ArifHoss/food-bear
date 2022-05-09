@@ -51,6 +51,7 @@ public class FoodBearUserService {
             foundUser.setLastName(foodBearUser.getLastName());
         }
         if (foodBearUser.getEmail() != null) {
+            checkExistingEmail(foodBearUser);
             foundUser.setEmail(foodBearUser.getEmail());
         }
         if (foodBearUser.getPassword() != null) {
