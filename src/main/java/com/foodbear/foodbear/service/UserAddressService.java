@@ -25,8 +25,7 @@ public class UserAddressService {
     }
 
     public UserAddress getAddressById(Long id) {
-        return userAddressDaoJpa.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("ADDRESS_NOT_FOUND"));
+        return findAddressById(id);
     }
 
     public UserAddress createAddress(UserAddress userAddress, Long userId) {
@@ -42,22 +41,31 @@ public class UserAddressService {
         String adressLine = userAddress.getAdressLine();
         Long zipcode = userAddress.getZipcode();
         String city = userAddress.getCity();
-        UserAddress getAddress = userAddressDaoJpa.getById(id);
+
+        UserAddress address = findAddressById(id);
 
         if (userAddress.getAdressLine() != null) {
-            getAddress.setAdressLine(adressLine);
+            address.setAdressLine(adressLine);
         }
         if (userAddress.getZipcode() != null) {
-            getAddress.setZipcode(zipcode);
+            address.setZipcode(zipcode);
         }
         if (userAddress.getCity() != null) {
-            getAddress.setCity(city);
+            address.setCity(city);
         }
-        return userAddressDaoJpa.save(getAddress);
+        return userAddressDaoJpa.save(address);
     }
 
     public String delete(Long id) {
-        userAddressDaoJpa.deleteById(id);
+        UserAddress address = findAddressById(id);
+        userAddressDaoJpa.delete(address);
         return "USER_ADDRESS_HAS_BEEN_DELETED";
+    }
+
+
+
+    private UserAddress findAddressById(Long id) {
+        return userAddressDaoJpa.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("ADDRESS_NOT_FOUND"));
     }
 }
