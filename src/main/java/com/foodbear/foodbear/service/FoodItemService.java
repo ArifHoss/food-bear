@@ -1,18 +1,15 @@
 package com.foodbear.foodbear.service;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.entities.FoodItem;
 import com.foodbear.foodbear.entities.Restaurant;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodItemDaoJpa;
 import com.foodbear.foodbear.repo.RestaurantDaoJpa;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -26,18 +23,22 @@ public class FoodItemService {
         return (List<FoodItem>) foodItemDaoJpa.findAll();
     }
 
-    public FoodItem addFoodItem(FoodItem foodItem,Long id) {
-        Restaurant foundRestaurant = restaurantDaoJpa.findById(id).get();
-        foodItem.setRestaurant(foundRestaurant);
-        foodItemDaoJpa.save(foodItem);
-        return foodItem;
+    public FoodItem createFoodItemWithRestaurant(FoodItem foodItem, Long id) {
+
+        Restaurant restaurant = restaurantDaoJpa.findById(id)
+                .orElseThrow(()->new ResourceNotFoundException("INVALID_RESTAURANT_ID"));
+
+        foodItem.setRestaurant(restaurant);
+
+        return foodItemDaoJpa.save(foodItem);
     }
 
     public void deleteFoodItem(Long id) {
-        foodItemDaoJpa.deleteById(id);
+        FoodItem foodItem = findItemById(id);
+        foodItemDaoJpa.delete(foodItem);
     }
 
-    public void updateFoodItem(Long id, FoodItem foodItem) {
+    public FoodItem updateFoodItem(Long id, FoodItem foodItem) {
         FoodItem foundFoodItem = findItemById(id);
 
         if(foodItem.getFoodItem()!=null){
@@ -47,7 +48,7 @@ public class FoodItemService {
         }if(foodItem.getType()!=null){
             foundFoodItem.setType(foodItem.getType());
         }
-        foodItemDaoJpa.save(foundFoodItem);
+        return foodItemDaoJpa.save(foundFoodItem);
     }
 
     public FoodItem getItemById(Long itemId) {
