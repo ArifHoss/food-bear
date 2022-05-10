@@ -1,10 +1,14 @@
 package com.foodbear.foodbear.controller;
 
+import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.entities.FoodItem;
+import com.foodbear.foodbear.services.service.FoodBearUserService;
 import com.foodbear.foodbear.services.service.FoodItemService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -16,6 +20,19 @@ import java.util.List;
 public class FoodItemController {
 
     private FoodItemService foodItemService;
+    private FoodBearUserService foodBearUserService;
+
+    @GetMapping("/foodbear")
+    public String showFoodItems(Model model){
+        //ModelAndView mav = new ModelAndView("index");
+
+        List<FoodItem> list = foodItemService.getAllFoodItems();
+       // mav.addObject("fooditems", list);
+
+        model.addAttribute("foodItems", foodItemService.getAllFoodItems());
+
+        return "index";
+    }
 
     @GetMapping
     public List<FoodItem> getAllFoodItems(){

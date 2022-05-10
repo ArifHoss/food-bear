@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Bear</title>
+</head>
+<body>
+<h1>Food Bear</h1>
+<div>
+    <h2>Food Items</h2>
+    <hr/>
+    <table>
+
+        <thead>
+        <tr>
+            <th>Food Item</th>
+            <th>Type</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="item : ${fooditems}">
+            <!--/*@thymesVar id="foodItem" type="java.util.List"*/-->
+            <td th:text="${item.foodItem}"></td>
+            <td th:text="${item.type}"></td>
+            <td th:text="${item.price}"></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>
