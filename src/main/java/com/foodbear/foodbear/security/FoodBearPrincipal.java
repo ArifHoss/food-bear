@@ -1,10 +1,15 @@
 package com.foodbear.foodbear.security;
 
+import com.foodbear.foodbear.entities.AuthorizationType;
 import com.foodbear.foodbear.entities.FoodBearUser;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 public class FoodBearPrincipal implements UserDetails {
 
@@ -16,7 +21,14 @@ public class FoodBearPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+
+        for (AuthorizationType type :
+                AuthorizationType.values()) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(type.getAuthority()));
+        }
+        System.out.println(grantedAuthorities);
+        return grantedAuthorities;
     }
 
     @Override

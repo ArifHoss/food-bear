@@ -1,6 +1,13 @@
 package com.foodbear.foodbear.entities;
 
-public enum AuthorizationType {
+import org.springframework.security.core.GrantedAuthority;
 
-    ADMIN, MANAGER, DELIVERY, CUSTOMER
+public enum AuthorizationType implements GrantedAuthority {
+
+    ADMIN, MANAGER, DELIVERY, CUSTOMER;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }
