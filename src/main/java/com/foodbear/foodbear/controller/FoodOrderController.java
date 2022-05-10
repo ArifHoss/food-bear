@@ -41,6 +41,20 @@ public class FoodOrderController {
     }
 
 
+
+    @PutMapping("{orderId}/item/{itemId}")
+    public FoodOrder addItemToOrder(@PathVariable("orderId") Long orderId,
+                                    @PathVariable("itemId") Long itemId){
+        return orderService.addItemToOrder(orderId, itemId);
+    }
+
+    @PutMapping("{orderId}/promotion/{promotionId}")
+    public FoodOrder addPromotionToOrder(@PathVariable("orderId") Long orderId,
+                                    @PathVariable("promotionId") Long promotionId){
+        return orderService.addPromotionToOrder(orderId, promotionId);
+    }
+
+
     @DeleteMapping("/{id}")
     public String deleteOrder(@PathVariable("id")Long id){
         orderService.deleteOrder(id);

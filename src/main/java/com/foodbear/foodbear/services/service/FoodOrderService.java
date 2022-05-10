@@ -16,4 +16,8 @@ public interface FoodOrderService {
     FoodOrder createAOrderItemAndPromotion(FoodOrder order, Long foodItemId, Long promotionId);
 
     FoodOrder getOrderById(Long orderId);
+
+    FoodOrder addItemToOrder(Long orderId, Long itemId);
+
+    FoodOrder addPromotionToOrder(Long orderId, Long promotionId);
 }

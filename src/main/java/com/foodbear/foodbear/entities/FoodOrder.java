@@ -27,7 +27,7 @@ public class FoodOrder extends SharedClass{
     @ManyToOne(cascade = CascadeType.MERGE)
     private FoodBearUser customer;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE)
     private Set<FoodItem> orderItems=new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.MERGE)

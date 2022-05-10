@@ -8,6 +8,7 @@ import com.foodbear.foodbear.repo.FoodItemDaoJpa;
 import com.foodbear.foodbear.repo.FoodOrderDaoJpa;
 import com.foodbear.foodbear.repo.PromotionDaoJpa;
 import com.foodbear.foodbear.sender.Sender;
+import com.foodbear.foodbear.services.service.FoodOrderService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @Service("orderService")
-public class FoodOrderServiceImpl implements com.foodbear.foodbear.services.service.FoodOrderService {
+public class FoodOrderServiceImpl implements FoodOrderService {
 
     private FoodOrderDaoJpa orderDaoJpa;
     private FoodItemDaoJpa foodItemDaoJpa;
@@ -69,6 +70,41 @@ public class FoodOrderServiceImpl implements com.foodbear.foodbear.services.serv
     @Override
     public FoodOrder getOrderById(Long orderId) {
         return findOrderById(orderId);
+    }
+
+    @Override
+    public FoodOrder addItemToOrder(Long orderId, Long itemId) {
+        FoodOrder order = findOrderById(orderId);
+        FoodItem item = foodItemDaoJpa.findById(itemId).orElseThrow(() ->
+                new ResourceNotFoundException("INVALID_ITEM_ID"));
+        order.getOrderItems().add(item);
+
+        Set<FoodItem> orderItem = order.getOrderItems();
+
+//        Long tot = order.getTotalPrice();
+//
+//       order.setTotalPrice(totalPriceCaulculator(orderItem, tot));
+        return orderDaoJpa.save(order);
+    }
+
+//    private long totalPriceCaulculator(Set<FoodItem> orderItem, Long tot) {
+//
+//
+//        for (FoodItem i: orderItem) {
+//           Long t = i.getPrice();
+//           tot += t;
+//        }
+//        return tot;
+//    }
+
+    @Override
+    public FoodOrder addPromotionToOrder(Long orderId, Long promotionId) {
+
+        FoodOrder order = findOrderById(orderId);
+        Promotion promotion = promotionDaoJpa.findById(promotionId).orElseThrow(()->
+                new ResourceNotFoundException("INVALID_PROMOTION_ID"));
+        order.setPromotion(promotion);
+        return orderDaoJpa.save(order);
     }
 
     private FoodOrder findOrderById(Long orderId) {
