@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -27,7 +29,7 @@ public class StartUpRun implements CommandLineRunner {
                     .lastName("Bear")
                     .email("food@bear.se")
                     .authorityType(AuthorityType.ADMIN)
-                    .passwordRaw(passwordEncoder.encode("hej123"))
+                    .encryptedPassword(passwordEncoder.encode("hej123").getBytes(StandardCharsets.UTF_8))
                     .build();
             foodBearUserDaoJpa.save(user);
 

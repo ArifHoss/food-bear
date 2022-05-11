@@ -22,7 +22,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class JwtUserDetailsService implements UserDetailsService {
 
-    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final FoodBearUserDaoJpa foodBearUserDaoJpa;
 
 
