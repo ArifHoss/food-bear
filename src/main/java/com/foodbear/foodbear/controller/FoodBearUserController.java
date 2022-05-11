@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
+
 @Data
 @RestController
 @CrossOrigin
@@ -17,7 +18,7 @@ public class FoodBearUserController {
     private final FoodBearUserServiceImpl foodBearUserServiceImpl;
 
     @GetMapping
-    public List<FoodBearUser> getAllUsers(){
+    public Set<Object> getAllUsers(){
         return foodBearUserServiceImpl.getAllUsers();
     }
 

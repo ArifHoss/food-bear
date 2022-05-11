@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -18,11 +19,12 @@ import java.util.List;
 public class FoodBearUserServiceImpl implements FoodBearUserService {
 
     private final FoodBearUserDaoJpa foodBearUserDaoJpa;
+    private final Clearance clearance;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
-    public List<FoodBearUser> getAllUsers() {
-        return (List<FoodBearUser>) foodBearUserDaoJpa.findAll();
+    public Set<Object> getAllUsers() {
+        return clearance.getAllowedUser();
     }
 
 
@@ -77,6 +79,11 @@ public class FoodBearUserServiceImpl implements FoodBearUserService {
     @Override
     public FoodBearUser findUserByUsername(String username) {
         return foodBearUserDaoJpa.findByEmail(username);
+    }
+
+    @Override
+    public FoodBearUser getCurrentTokenUser() {
+        return clearance.getCurrentTokenUser();
     }
 
     private FoodBearUser findUser(Long id) {

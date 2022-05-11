@@ -1,9 +1,11 @@
 package com.foodbear.foodbear.controller;
 
+import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.security.JwtRequest;
 import com.foodbear.foodbear.security.JwtResponse;
 import com.foodbear.foodbear.security.JwtTokenUtil;
 import com.foodbear.foodbear.security.JwtUserDetailsService;
+import com.foodbear.foodbear.services.service.FoodBearUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +24,18 @@ import org.springframework.web.bind.annotation.*;
 public class JwtAuthenticationController {
 
     private final AuthenticationManager authenticationManager;
-
     private final JwtTokenUtil jwtTokenUtil;
-
     private final JwtUserDetailsService userDetailsService;
+    private final FoodBearUserService foodBearUserService;
 
-    @PostMapping("")
+
+    @GetMapping
+    public FoodBearUser getCurrentTokenUser(){
+        return foodBearUserService.getCurrentTokenUser();
+    }
+
+
+    @PostMapping
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         log.debug("In auth controller");

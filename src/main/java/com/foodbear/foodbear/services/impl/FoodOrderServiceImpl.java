@@ -11,6 +11,7 @@ import com.foodbear.foodbear.sender.Sender;
 import com.foodbear.foodbear.services.service.FoodOrderService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class FoodOrderServiceImpl implements FoodOrderService {
     private FoodOrderDaoJpa orderDaoJpa;
     private FoodItemDaoJpa foodItemDaoJpa;
     private PromotionDaoJpa promotionDaoJpa;
+    private Clearance clearance;
 
 
 
@@ -35,7 +37,8 @@ public class FoodOrderServiceImpl implements FoodOrderService {
     @Override
     public FoodOrder createOrder(FoodOrder foodBearOrder) {
         Sender.sendMessage(foodBearOrder.getTotalPrice());
-        return orderDaoJpa.save(foodBearOrder);
+            return orderDaoJpa.save(foodBearOrder);
+
     }
 
     @Override

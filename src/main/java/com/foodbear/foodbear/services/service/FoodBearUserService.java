@@ -1,11 +1,13 @@
 package com.foodbear.foodbear.services.service;
 
 import com.foodbear.foodbear.entities.FoodBearUser;
+import org.springframework.security.access.annotation.Secured;
 
-import java.util.List;
+import java.util.Set;
 
 public interface FoodBearUserService {
-    List<FoodBearUser> getAllUsers();
+    @Secured("ROLE_ADMIN")
+    Set<Object> getAllUsers();
 
     FoodBearUser createUser(FoodBearUser foodBearUser);
 
@@ -16,4 +18,6 @@ public interface FoodBearUserService {
     FoodBearUser findUserById(Long id);
 
     FoodBearUser findUserByUsername(String username);
+
+    FoodBearUser getCurrentTokenUser();
 }
