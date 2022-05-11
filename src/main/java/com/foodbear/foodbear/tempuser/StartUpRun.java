@@ -35,5 +35,44 @@ public class StartUpRun implements CommandLineRunner {
 
             log.debug("User {} created...", user.getFirstName());
         }
+
+        if ( !foodBearUserDaoJpa.existsByEmail("karin@bear.se") ) {
+            FoodBearUser user = FoodBearUser.builder()
+                    .firstName("Karin")
+                    .lastName("Ismael")
+                    .email("karin@bear.se")
+                    .authorityType(AuthorityType.MANAGER)
+                    .encryptedPassword(passwordEncoder.encode("hej123").getBytes(StandardCharsets.UTF_8))
+                    .build();
+            foodBearUserDaoJpa.save(user);
+
+            log.debug("User {} created...", user.getFirstName());
+        }
+
+        if ( !foodBearUserDaoJpa.existsByEmail("zoro@bear.se") ) {
+            FoodBearUser user = FoodBearUser.builder()
+                    .firstName("Mr. Zoro")
+                    .lastName("Zoro")
+                    .email("zoro@bear.se")
+                    .authorityType(AuthorityType.DELIVERY)
+                    .encryptedPassword(passwordEncoder.encode("hej123").getBytes(StandardCharsets.UTF_8))
+                    .build();
+            foodBearUserDaoJpa.save(user);
+
+            log.debug("User {} created...", user.getFirstName());
+        }
+
+        if ( !foodBearUserDaoJpa.existsByEmail("arif@bear.se") ) {
+            FoodBearUser user = FoodBearUser.builder()
+                    .firstName("Mr. Arif")
+                    .lastName("Hossain")
+                    .email("arif@bear.se")
+                    .authorityType(AuthorityType.CUSTOMER)
+                    .encryptedPassword(passwordEncoder.encode("hej123").getBytes(StandardCharsets.UTF_8))
+                    .build();
+            foodBearUserDaoJpa.save(user);
+
+            log.debug("User {} created...", user.getFirstName());
+        }
     }
 }
