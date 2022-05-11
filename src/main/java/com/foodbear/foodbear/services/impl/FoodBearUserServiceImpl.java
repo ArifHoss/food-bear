@@ -32,7 +32,7 @@ public class FoodBearUserServiceImpl implements FoodBearUserService {
 
         checkExistingEmail(foodBearUser);
 
-        foodBearUser.setPassword(passwordEncoder.encode(foodBearUser.getPassword()));
+        foodBearUser.setPasswordRaw(passwordEncoder.encode(foodBearUser.getPasswordRaw()));
 
          foodBearUserDaoJpa.save(foodBearUser);
          return foodBearUser;
@@ -59,8 +59,8 @@ public class FoodBearUserServiceImpl implements FoodBearUserService {
             checkExistingEmail(foodBearUser);
             foundUser.setEmail(foodBearUser.getEmail());
         }
-        if (foodBearUser.getPassword() != null) {
-            foundUser.setPassword(foodBearUser.getPassword());
+        if (foodBearUser.getPasswordRaw() != null) {
+            foundUser.setPasswordRaw(foodBearUser.getPasswordRaw());
         }
         if (foodBearUser.getAuthorityType() != null) {
             foundUser.setAuthorityType(foodBearUser.getAuthorityType());

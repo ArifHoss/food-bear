@@ -35,7 +35,7 @@ public class FoodBearUser extends SharedClass{
     private Set<FoodOrder> orders = new HashSet<>();
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String password;
+    private String passwordRaw;
 
     @JsonIgnore
     private byte[] encryptedPassword;

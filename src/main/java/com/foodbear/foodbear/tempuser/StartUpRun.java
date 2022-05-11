@@ -27,7 +27,7 @@ public class StartUpRun implements CommandLineRunner {
                     .lastName("Bear")
                     .email("food@bear.se")
                     .authorityType(AuthorityType.ADMIN)
-                    .password(passwordEncoder.encode("hej123"))
+                    .passwordRaw(passwordEncoder.encode("hej123"))
                     .build();
             foodBearUserDaoJpa.save(user);
 
