@@ -34,10 +34,10 @@ public class Clearance {
         return getAuth().getAuthorities().toArray()[0].toString();
     }
 
-    public Set<Object> getAllowedUser(){
-        if (getRole().equals("ROLE_ADMIN"))
-            return userDaoJpa.geAllUsers();
-        return null;
-    }
+//    public Set<Object> getAllowedUser(){
+//        if (getRole().equals("ROLE_ADMIN"))
+//            return userDaoJpa.geAllUsers();
+//        return null;
+//    }
 
 }

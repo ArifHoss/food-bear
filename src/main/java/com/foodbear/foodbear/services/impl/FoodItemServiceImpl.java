@@ -21,7 +21,11 @@ public class FoodItemServiceImpl implements com.foodbear.foodbear.services.servi
 
     @Override
     public List<FoodItem> getAllFoodItems() {
-        return (List<FoodItem>) foodItemDaoJpa.findAll();
+        try {
+            return (List<FoodItem>) foodItemDaoJpa.findAll();
+        } catch (Exception e) {
+            throw new ResourceNotFoundException("SOMETHING_WENT_WRONG!MAY_BE_YOU_ARE_NOT_ALLOWED");
+        }
     }
 
     @Override

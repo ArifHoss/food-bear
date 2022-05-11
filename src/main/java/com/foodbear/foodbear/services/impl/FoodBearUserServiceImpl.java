@@ -23,8 +23,8 @@ public class FoodBearUserServiceImpl implements FoodBearUserService {
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
-    public Set<Object> getAllUsers() {
-        return clearance.getAllowedUser();
+    public List<FoodBearUser> getAllUsers() {
+        return (List<FoodBearUser>) foodBearUserDaoJpa.findAll();
     }
 
 

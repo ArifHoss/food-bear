@@ -3,16 +3,20 @@ package com.foodbear.foodbear.services.service;
 import com.foodbear.foodbear.entities.FoodBearUser;
 import org.springframework.security.access.annotation.Secured;
 
+import java.util.List;
 import java.util.Set;
 
 public interface FoodBearUserService {
-    @Secured("ROLE_ADMIN")
-    Set<Object> getAllUsers();
+    @Secured({"ROLE_ADMIN", "ROLE_MANAGER"})
+    List<FoodBearUser> getAllUsers();
 
+    @Secured("ROLE_ADMIN")
     FoodBearUser createUser(FoodBearUser foodBearUser);
 
+    @Secured("ROLE_ADMIN")
     void deleteUser(Long id);
 
+    @Secured("ROLE_ADMIN")
     FoodBearUser updateUser(Long id, FoodBearUser foodBearUser);
 
     FoodBearUser findUserById(Long id);
