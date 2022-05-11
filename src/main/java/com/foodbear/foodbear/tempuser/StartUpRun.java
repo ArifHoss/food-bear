@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.tempuser;
 
-import com.foodbear.foodbear.entities.AuthorizationType;
+import com.foodbear.foodbear.entities.AuthorityType;
 import com.foodbear.foodbear.entities.FoodBearUser;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class StartUpRun implements CommandLineRunner {
                     .firstName("Mr. Food")
                     .lastName("Bear")
                     .email("food@bear.se")
-                    .authorizationType(AuthorizationType.ADMIN)
+                    .authorityType(AuthorityType.ADMIN)
                     .password(passwordEncoder.encode("hej123"))
                     .build();
             foodBearUserDaoJpa.save(user);

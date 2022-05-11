@@ -26,7 +26,7 @@ public class FoodBearUser extends SharedClass{
     private String email;
 
 
-    private AuthorizationType authorizationType;
+    private AuthorityType authorityType;
 
     @OneToOne (cascade = CascadeType.MERGE, orphanRemoval = true)
     private UserAddress userAddress;

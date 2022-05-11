@@ -14,5 +14,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+  main:
+    allow-bean-definition-overriding: true
+
+jwt:
+  secret: 092345i6wetrp09wp00PUL
+
+  activemq:
+    broker-url: tcp://localhost:61616
+
+
 
 

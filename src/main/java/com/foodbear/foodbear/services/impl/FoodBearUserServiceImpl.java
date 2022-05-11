@@ -62,8 +62,8 @@ public class FoodBearUserServiceImpl implements FoodBearUserService {
         if (foodBearUser.getPassword() != null) {
             foundUser.setPassword(foodBearUser.getPassword());
         }
-        if (foodBearUser.getAuthorizationType() != null) {
-            foundUser.setAuthorizationType(foodBearUser.getAuthorizationType());
+        if (foodBearUser.getAuthorityType() != null) {
+            foundUser.setAuthorityType(foodBearUser.getAuthorityType());
         }
 
         return foodBearUserDaoJpa.save(foundUser);
