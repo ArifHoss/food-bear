@@ -24,11 +24,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/user",
+							"raw": "localhost:8081/api/user",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"user"
@@ -53,11 +53,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/user/2",
+							"raw": "localhost:8081/api/user/2",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"user",
@@ -92,11 +92,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/user",
+							"raw": "localhost:8081/api/user",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"user"
@@ -121,11 +121,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/user/1",
+							"raw": "localhost:8081/api/user/1",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"user",
@@ -160,11 +160,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/user/1",
+							"raw": "localhost:8081/api/user/1",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"user",
@@ -192,11 +192,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/auth",
+							"raw": "localhost:8081/api/auth",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"auth"
@@ -221,11 +221,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/auth",
+							"raw": "localhost:8081/api/auth",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"auth"
@@ -255,11 +255,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/order",
+							"raw": "localhost:8081/api/order",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"order"
@@ -293,11 +293,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/order",
+							"raw": "localhost:8081/api/order",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"order"
@@ -322,11 +322,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/order/9",
+							"raw": "localhost:8081/api/order/9",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"order",
@@ -352,11 +352,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/order/5",
+							"raw": "localhost:8081/api/order/5",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"order",
@@ -391,11 +391,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/order/1",
+							"raw": "localhost:8081/api/order/1",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"order",
@@ -421,11 +421,11 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/order/9/item/5",
+							"raw": "localhost:8081/api/order/9/item/5",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"order",
@@ -458,11 +458,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/promotion",
+							"raw": "localhost:8081/api/promotion",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"promotion"
@@ -496,11 +496,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/promotion",
+							"raw": "localhost:8081/api/promotion",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"promotion"
@@ -525,11 +525,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/promotion/1",
+							"raw": "localhost:8081/api/promotion/1",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"promotion",
@@ -555,11 +555,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/promotion/1",
+							"raw": "localhost:8081/api/promotion/1",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"promotion",
@@ -594,11 +594,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/promotion/4",
+							"raw": "localhost:8081/api/promotion/4",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"promotion",
@@ -629,11 +629,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/restaurant",
+							"raw": "localhost:8081/api/restaurant",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"restaurant"
@@ -667,11 +667,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/restaurant",
+							"raw": "localhost:8081/api/restaurant",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"restaurant"
@@ -696,11 +696,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/restaurant/4",
+							"raw": "localhost:8081/api/restaurant/4",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"restaurant",
@@ -726,11 +726,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/restaurant/5",
+							"raw": "localhost:8081/api/restaurant/5",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"restaurant",
@@ -765,11 +765,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/restaurant/4",
+							"raw": "localhost:8081/api/restaurant/4",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"restaurant",
@@ -800,11 +800,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/address",
+							"raw": "localhost:8081/api/address",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"address"
@@ -838,11 +838,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/address/user/2",
+							"raw": "localhost:8081/api/address/user/2",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"address",
@@ -869,11 +869,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/address/8",
+							"raw": "localhost:8081/api/address/8",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"address",
@@ -899,11 +899,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/address/7",
+							"raw": "localhost:8081/api/address/7",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"address",
@@ -938,11 +938,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/address/7",
+							"raw": "localhost:8081/api/address/7",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"address",
@@ -973,11 +973,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/fooditem",
+							"raw": "localhost:8081/api/fooditem",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"fooditem"
@@ -1002,11 +1002,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/fooditem/14",
+							"raw": "localhost:8081/api/fooditem/14",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"fooditem",
@@ -1041,11 +1041,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/fooditem/restaurant/12",
+							"raw": "localhost:8081/api/fooditem/restaurant/12",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"fooditem",
@@ -1081,11 +1081,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/fooditem/14",
+							"raw": "localhost:8081/api/fooditem/14",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"fooditem",
@@ -1111,11 +1111,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/fooditem/14",
+							"raw": "localhost:8081/api/fooditem/14",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"api",
 								"fooditem",
