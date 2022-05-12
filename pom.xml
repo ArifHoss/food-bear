@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.foodbear</groupId>
 	<artifactId>food-bear</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>docker</version>
 	<name>food-bear</name>
 	<description>Food Home Delivery Project</description>
 	<properties>
