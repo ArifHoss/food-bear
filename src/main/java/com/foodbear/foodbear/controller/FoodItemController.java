@@ -24,13 +24,8 @@ public class FoodItemController {
 
     @GetMapping("/foodbear")
     public String showFoodItems(Model model){
-        //ModelAndView mav = new ModelAndView("index");
-
         List<FoodItem> list = foodItemService.getAllFoodItems();
-       // mav.addObject("fooditems", list);
-
-        model.addAttribute("foodItems", foodItemService.getAllFoodItems());
-
+        model.addAttribute("items", list);
         return "index";
     }
 
