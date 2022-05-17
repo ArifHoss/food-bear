@@ -2,6 +2,7 @@ package com.foodbear.foodbear.services.impl;
 
 import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import com.foodbear.foodbear.exception.ConflictException;
+import com.foodbear.foodbear.exception.NotAuthorizedException;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
 import com.foodbear.foodbear.services.service.FoodBearUserService;
@@ -29,13 +30,16 @@ public class FoodBearUserServiceImpl implements FoodBearUserService {
 
     @Override
     public FoodBearUser createUser(FoodBearUser foodBearUser) {
+        if(!clearance.getRole().equals("ROLE_ADMIN")){
+            throw new NotAuthorizedException("You are not authorized to make this request");
+        }else {
 
+            checkExistingEmail(foodBearUser);
 
-        checkExistingEmail(foodBearUser);
+            foodBearUser.setPasswordRaw(passwordEncoder.encode(foodBearUser.getPasswordRaw()));
 
-        foodBearUser.setPasswordRaw(passwordEncoder.encode(foodBearUser.getPasswordRaw()));
-
-         foodBearUserDaoJpa.save(foodBearUser);
+            foodBearUserDaoJpa.save(foodBearUser);
+        }
          return foodBearUser;
     }
 

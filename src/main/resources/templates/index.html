@@ -20,11 +20,11 @@
         </thead>
 
         <tbody>
-        <tr th:each="item : ${fooditems}">
+        <tr th:each="item : ${items}">
             <!--/*@thymesVar id="foodItem" type="java.util.List"*/-->
-            <td th:text="${item.foodItem}"></td>
-            <td th:text="${item.type}"></td>
-            <td th:text="${item.price}"></td>
+            <td th:text="${items.foodItem}"></td>
+            <td th:text="${items.type}"></td>
+            <td th:text="${items.price}"></td>
 
         </tr>
         </tbody>
