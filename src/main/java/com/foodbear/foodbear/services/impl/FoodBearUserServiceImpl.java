@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.services.impl;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import com.foodbear.foodbear.exception.ConflictException;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor

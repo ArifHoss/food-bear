@@ -1,6 +1,7 @@
 package com.foodbear.foodbear.services.service;
 
-import com.foodbear.foodbear.entities.FoodItem;
+import com.foodbear.foodbear.entities.dto.FoodItemDto;
+import com.foodbear.foodbear.entities.pojos.FoodItem;
 
 import java.util.List;
 

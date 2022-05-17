@@ -1,9 +1,11 @@
 package com.foodbear.foodbear.controller;
 
-import com.foodbear.foodbear.entities.UserAddress;
+import com.foodbear.foodbear.entities.dto.UserAdressDto;
+import com.foodbear.foodbear.entities.pojos.UserAddress;
 import com.foodbear.foodbear.services.service.UserAddressService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,25 +18,30 @@ import java.util.List;
 public class UserAddressController {
 
     private UserAddressService userAddressService;
+    ModelMapper modelMapper;
 
     @GetMapping
-    public List<UserAddress> getAllAddress(){
-        return userAddressService.getAllAddress();
+    public List<UserAdressDto> getAllAddress(){
+        return userAddressService.getAllAddress().stream()
+                .map(adress -> modelMapper.map(adress, UserAdressDto.class)).toList();
     }
     @GetMapping("/{id}")
-    public UserAddress getAddressById(@PathVariable Long id){
-        return userAddressService.getAddressById(id);
+    public UserAdressDto getAddressById(@PathVariable Long id){
+        UserAddress foundAdress = userAddressService.getAddressById(id);
+        return modelMapper.map(foundAdress, UserAdressDto.class);
     }
 
     @PostMapping("user/{userId}")
-    public UserAddress create(@RequestBody UserAddress userAddress,
+    public UserAdressDto create(@RequestBody UserAddress userAddress,
                               @PathVariable("userId") Long userId){
-        return userAddressService.createAddress(userAddress, userId);
+        UserAddress newAdress = userAddressService.createAddress(userAddress, userId);
+        return modelMapper.map(newAdress, UserAdressDto.class);
     }
 
     @PatchMapping("/{id}")
-    public UserAddress update(@PathVariable Long id, @RequestBody UserAddress userAddress){
-        return userAddressService.update(id, userAddress);
+    public UserAdressDto update(@PathVariable Long id, @RequestBody UserAddress userAddress){
+        UserAddress updatedAdress = userAddressService.update(id, userAddress);
+        return modelMapper.map(updatedAdress, UserAdressDto.class);
     }
 
     @DeleteMapping("/{id}")

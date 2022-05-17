@@ -1,10 +1,9 @@
 package com.foodbear.foodbear.services.service;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import org.springframework.security.access.annotation.Secured;
 
 import java.util.List;
-import java.util.Set;
 
 public interface FoodBearUserService {
     @Secured({"ROLE_ADMIN", "ROLE_MANAGER"})

@@ -1,13 +1,14 @@
 package com.foodbear.foodbear.controller;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
+import com.foodbear.foodbear.entities.dto.FoodBearUserDto;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import com.foodbear.foodbear.services.impl.FoodBearUserServiceImpl;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @Data
 @RestController
@@ -17,20 +18,25 @@ import java.util.Set;
 public class FoodBearUserController {
 
     private final FoodBearUserServiceImpl foodBearUserServiceImpl;
+    private ModelMapper modelMapper;
 
     @GetMapping
-    public List<FoodBearUser> getAllUsers(){
-        return foodBearUserServiceImpl.getAllUsers();
+    public List<FoodBearUserDto> getAllUsers(){
+
+        return foodBearUserServiceImpl.getAllUsers().stream()
+                .map(user -> modelMapper.map(user, FoodBearUserDto.class)).toList();
     }
 
     @GetMapping("{id}")
-    public FoodBearUser findUserById(@PathVariable Long id){
-        return foodBearUserServiceImpl.findUserById(id);
+    public FoodBearUserDto findUserById(@PathVariable Long id){
+        FoodBearUser foundUser = foodBearUserServiceImpl.findUserById(id);
+        return modelMapper.map(foundUser, FoodBearUserDto.class);
     }
 
     @PostMapping
-    public  FoodBearUser createUser(@RequestBody FoodBearUser foodBearUser){
-        return foodBearUserServiceImpl.createUser(foodBearUser);
+    public  FoodBearUserDto createUser(@RequestBody FoodBearUser foodBearUser){
+        FoodBearUser newUser = foodBearUserServiceImpl.createUser(foodBearUser);
+        return modelMapper.map(newUser, FoodBearUserDto.class);
     }
 
     @DeleteMapping("/{id}")
@@ -39,7 +45,8 @@ public class FoodBearUserController {
         return "USER HAS BEEN DELETED";
     }
     @PatchMapping("/{id}")
-    public FoodBearUser updateUser(@PathVariable("id") Long id, @RequestBody FoodBearUser foodBearUser){
-        return foodBearUserServiceImpl.updateUser(id, foodBearUser);
+    public FoodBearUserDto updateUser(@PathVariable("id") Long id, @RequestBody FoodBearUser foodBearUser){
+        FoodBearUser foundUser = foodBearUserServiceImpl.updateUser(id, foodBearUser);
+        return modelMapper.map(foundUser, FoodBearUserDto.class);
     }
 }

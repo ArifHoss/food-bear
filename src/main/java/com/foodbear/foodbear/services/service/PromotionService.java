@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.services.service;
 
-import com.foodbear.foodbear.entities.Promotion;
+import com.foodbear.foodbear.entities.pojos.Promotion;
 
 import java.util.List;
 import java.util.Map;

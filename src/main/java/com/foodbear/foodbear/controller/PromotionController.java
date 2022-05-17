@@ -1,9 +1,11 @@
 package com.foodbear.foodbear.controller;
 
-import com.foodbear.foodbear.entities.Promotion;
+import com.foodbear.foodbear.entities.dto.PromotionDto;
+import com.foodbear.foodbear.entities.pojos.Promotion;
 import com.foodbear.foodbear.services.service.PromotionService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,24 +19,29 @@ import java.util.Map;
 public class PromotionController {
 
     private PromotionService promotionService;
+    private ModelMapper modelMapper;
 
     @GetMapping
-    public List<Promotion> getAllPromotions(){
-        return promotionService.getAllPromotions();
+    public List<PromotionDto> getAllPromotions(){
+        return promotionService.getAllPromotions().stream()
+                .map(promotion -> modelMapper.map(promotion, PromotionDto.class)).toList();
     }
 
     @GetMapping("/{id}")
-    public Promotion getById(@PathVariable Long id){
-        return promotionService.getById(id);
+    public PromotionDto getById(@PathVariable Long id){
+        Promotion foundPromotion = promotionService.getById(id);
+        return modelMapper.map(foundPromotion, PromotionDto.class);
     }
 
     @PostMapping
-    public Promotion create(@RequestBody Promotion promotion){
-        return promotionService.create(promotion);
+    public PromotionDto create(@RequestBody Promotion promotion){
+        Promotion newPromotion = promotionService.create(promotion);
+        return modelMapper.map(newPromotion, PromotionDto.class);
     }
     @PatchMapping("/{id}")
-    public Promotion update(@PathVariable Long id, @RequestBody Map<Object, Object> fields){
-        return promotionService.update(id, fields);
+    public PromotionDto update(@PathVariable Long id, @RequestBody Map<Object, Object> fields){
+        Promotion updatedPromotion = promotionService.update(id, fields);
+        return modelMapper.map(updatedPromotion, PromotionDto.class);
     }
 
     @DeleteMapping("/{id}")

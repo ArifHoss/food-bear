@@ -18,7 +18,7 @@ services:
         entrypoint: "java -jar food-bear-docker.jar"
 
     activemq:
-        image: rmohr/activemq:5.10.0
+        image: symptoma/activemq:latest
         container_name: activemqdocker
         ports:
             - "127.0.0.1:61616:61616"

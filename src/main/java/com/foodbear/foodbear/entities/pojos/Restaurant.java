@@ -1,4 +1,4 @@
-package com.foodbear.foodbear.entities;
+package com.foodbear.foodbear.entities.pojos;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

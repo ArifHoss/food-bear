@@ -1,18 +1,14 @@
 package com.foodbear.foodbear.services.impl;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
-import com.foodbear.foodbear.repo.FoodOrderDaoJpa;
-import com.foodbear.foodbear.services.service.FoodBearUserService;
-import com.foodbear.foodbear.services.service.FoodOrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor

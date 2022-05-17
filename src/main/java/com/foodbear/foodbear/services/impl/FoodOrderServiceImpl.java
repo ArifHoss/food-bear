@@ -1,8 +1,8 @@
 package com.foodbear.foodbear.services.impl;
 
-import com.foodbear.foodbear.entities.FoodItem;
-import com.foodbear.foodbear.entities.FoodOrder;
-import com.foodbear.foodbear.entities.Promotion;
+import com.foodbear.foodbear.entities.pojos.FoodItem;
+import com.foodbear.foodbear.entities.pojos.FoodOrder;
+import com.foodbear.foodbear.entities.pojos.Promotion;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodItemDaoJpa;
 import com.foodbear.foodbear.repo.FoodOrderDaoJpa;
@@ -11,7 +11,6 @@ import com.foodbear.foodbear.sender.Sender;
 import com.foodbear.foodbear.services.service.FoodOrderService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

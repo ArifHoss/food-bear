@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.repo;
 
-import com.foodbear.foodbear.entities.FoodItem;
+import com.foodbear.foodbear.entities.pojos.FoodItem;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

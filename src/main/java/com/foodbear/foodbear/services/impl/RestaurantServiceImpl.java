@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.services.impl;
 
-import com.foodbear.foodbear.entities.Restaurant;
+import com.foodbear.foodbear.entities.pojos.Restaurant;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.RestaurantDaoJpa;
 import lombok.AllArgsConstructor;

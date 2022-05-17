@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.security;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.Charset;

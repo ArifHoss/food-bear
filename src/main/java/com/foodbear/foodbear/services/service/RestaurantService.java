@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.services.service;
 
-import com.foodbear.foodbear.entities.Restaurant;
+import com.foodbear.foodbear.entities.pojos.Restaurant;
 import org.springframework.security.access.annotation.Secured;
 
 import java.util.List;

@@ -1,9 +1,11 @@
 package com.foodbear.foodbear.controller;
 
-import com.foodbear.foodbear.entities.FoodOrder;
+import com.foodbear.foodbear.entities.dto.FoodOrderDto;
+import com.foodbear.foodbear.entities.pojos.FoodOrder;
 import com.foodbear.foodbear.services.service.FoodOrderService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,43 +18,49 @@ import java.util.List;
 public class FoodOrderController {
 
     private FoodOrderService orderService;
+    private ModelMapper modelMapper;
 
     @GetMapping
-    public List<FoodOrder> getAllOrders(){
-        return orderService.getAllOrder();
+    public List<FoodOrderDto> getAllOrders(){
+        return orderService.getAllOrder().stream()
+                .map(order -> modelMapper.map(order, FoodOrderDto.class)).toList();
     }
 
     @GetMapping("{orderId}")
-    public FoodOrder getOrderById(@PathVariable("orderId") Long orderId){
-        return orderService.getOrderById(orderId);
+    public FoodOrderDto getOrderById(@PathVariable("orderId") Long orderId){
+        FoodOrder foundOrder = orderService.getOrderById(orderId);
+        return modelMapper.map(foundOrder, FoodOrderDto.class);
     }
 
     @PostMapping
-    public FoodOrder createOrder(@RequestBody FoodOrder foodBearOrder){
-      return orderService.createOrder(foodBearOrder);
+    public FoodOrderDto createOrder(@RequestBody FoodOrder foodBearOrder){
+        FoodOrder newOrder = orderService.createOrder(foodBearOrder);
+        return modelMapper.map(newOrder, FoodOrderDto.class);
 
     }
 
     @PostMapping("fooditem/{foodItemId}/promotion/{promotionId}")
-    public FoodOrder createAOrderWithItemAndPromotion(@RequestBody FoodOrder order,
+    public FoodOrderDto createAOrderWithItemAndPromotion(@RequestBody FoodOrder order,
                                                       @PathVariable("foodItemId") Long foodItemId,
                                                       @PathVariable("promotionId") Long promotionId){
-        return orderService.createAOrderItemAndPromotion(order,foodItemId,promotionId);
-
+        FoodOrder newOrderwithPromotion = orderService.createAOrderItemAndPromotion(order, foodItemId, promotionId);
+        return modelMapper.map(newOrderwithPromotion, FoodOrderDto.class);
     }
 
 
 
     @PutMapping("{orderId}/item/{itemId}")
-    public FoodOrder addItemToOrder(@PathVariable("orderId") Long orderId,
+    public FoodOrderDto addItemToOrder(@PathVariable("orderId") Long orderId,
                                     @PathVariable("itemId") Long itemId){
-        return orderService.addItemToOrder(orderId, itemId);
+        FoodOrder newItemOnOrder = orderService.addItemToOrder(orderId, itemId);
+        return modelMapper.map(newItemOnOrder, FoodOrderDto.class);
     }
 
     @PutMapping("{orderId}/promotion/{promotionId}")
-    public FoodOrder addPromotionToOrder(@PathVariable("orderId") Long orderId,
+    public FoodOrderDto addPromotionToOrder(@PathVariable("orderId") Long orderId,
                                     @PathVariable("promotionId") Long promotionId){
-        return orderService.addPromotionToOrder(orderId, promotionId);
+        FoodOrder newPromotionOnOrder = orderService.addPromotionToOrder(orderId, promotionId);
+        return modelMapper.map(newPromotionOnOrder, FoodOrderDto.class);
     }
 
 
@@ -63,7 +71,8 @@ public class FoodOrderController {
     }
 
     @PatchMapping("/{id}")
-    public FoodOrder updateOrder(@PathVariable("id")Long id, @RequestBody FoodOrder foodBearOrder){
-        return orderService.updateOrder(id, foodBearOrder);
+    public FoodOrderDto updateOrder(@PathVariable("id")Long id, @RequestBody FoodOrder foodBearOrder){
+        FoodOrder updatedOrder = orderService.updateOrder(id, foodBearOrder);
+        return modelMapper.map(updatedOrder, FoodOrderDto.class);
     }
 }

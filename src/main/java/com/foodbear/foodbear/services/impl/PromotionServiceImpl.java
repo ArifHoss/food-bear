@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.services.impl;
 
-import com.foodbear.foodbear.entities.Promotion;
+import com.foodbear.foodbear.entities.pojos.Promotion;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.PromotionDaoJpa;
 import lombok.AllArgsConstructor;

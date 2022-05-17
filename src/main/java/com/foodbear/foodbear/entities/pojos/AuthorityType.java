@@ -1,4 +1,4 @@
-package com.foodbear.foodbear.entities;
+package com.foodbear.foodbear.entities.pojos;
 
 public enum AuthorityType {
 

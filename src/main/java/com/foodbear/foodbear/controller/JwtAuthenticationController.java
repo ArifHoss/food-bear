@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.controller;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import com.foodbear.foodbear.security.JwtRequest;
 import com.foodbear.foodbear.security.JwtResponse;
 import com.foodbear.foodbear.security.JwtTokenUtil;

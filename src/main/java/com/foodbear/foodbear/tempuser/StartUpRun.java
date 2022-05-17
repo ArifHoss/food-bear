@@ -1,7 +1,7 @@
 package com.foodbear.foodbear.tempuser;
 
-import com.foodbear.foodbear.entities.AuthorityType;
-import com.foodbear.foodbear.entities.FoodBearUser;
+import com.foodbear.foodbear.entities.pojos.AuthorityType;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

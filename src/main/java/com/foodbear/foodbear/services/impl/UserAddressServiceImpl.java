@@ -1,7 +1,7 @@
 package com.foodbear.foodbear.services.impl;
 
-import com.foodbear.foodbear.entities.FoodBearUser;
-import com.foodbear.foodbear.entities.UserAddress;
+import com.foodbear.foodbear.entities.pojos.FoodBearUser;
+import com.foodbear.foodbear.entities.pojos.UserAddress;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodBearUserDaoJpa;
 import com.foodbear.foodbear.repo.UserAddressDaoJpa;

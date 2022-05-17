@@ -1,7 +1,8 @@
 package com.foodbear.foodbear.services.impl;
 
-import com.foodbear.foodbear.entities.FoodItem;
-import com.foodbear.foodbear.entities.Restaurant;
+import com.foodbear.foodbear.entities.dto.FoodItemDto;
+import com.foodbear.foodbear.entities.pojos.FoodItem;
+import com.foodbear.foodbear.entities.pojos.Restaurant;
 import com.foodbear.foodbear.exception.ResourceNotFoundException;
 import com.foodbear.foodbear.repo.FoodItemDaoJpa;
 import com.foodbear.foodbear.repo.RestaurantDaoJpa;

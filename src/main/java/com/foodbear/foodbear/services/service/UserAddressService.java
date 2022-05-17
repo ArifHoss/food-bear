@@ -1,6 +1,6 @@
 package com.foodbear.foodbear.services.service;
 
-import com.foodbear.foodbear.entities.UserAddress;
+import com.foodbear.foodbear.entities.pojos.UserAddress;
 
 import java.util.List;
 
